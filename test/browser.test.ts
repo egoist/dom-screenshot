@@ -2,11 +2,11 @@ import { readFile } from 'fs/promises'
 import { basename, join } from 'path'
 import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 import { preview } from 'vite'
-import puppeteer from 'puppeteer'
+import puppeteer from 'puppeteer-core'
 import { toMatchImageSnapshot } from 'jest-image-snapshot'
 import glob from 'glob'
 
-import type { Browser, ElementHandle, Page } from 'puppeteer'
+import type { Browser, ElementHandle, Page } from 'puppeteer-core'
 import type { PreviewServer } from 'vite'
 
 const port = 3000

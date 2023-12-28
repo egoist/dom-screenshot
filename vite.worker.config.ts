@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     target: 'es2015',
     emptyOutDir: false,
+    minify: false,
     lib: {
       name: 'worker',
       formats: ['iife'],

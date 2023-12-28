@@ -1,20 +1,20 @@
-<h1 align="center">modern-screenshot</h1>
+<h1 align="center">dom-screenshot</h1>
 
 <p align="center">
-  <a href="https://unpkg.com/modern-screenshot">
-    <img src="https://img.shields.io/bundlephobia/minzip/modern-screenshot" alt="Minzip">
+  <a href="https://unpkg.com/dom-screenshot">
+    <img src="https://img.shields.io/bundlephobia/minzip/dom-screenshot" alt="Minzip">
   </a>
-  <a href="https://www.npmjs.com/package/modern-screenshot">
-    <img src="https://img.shields.io/npm/v/modern-screenshot.svg" alt="Version">
+  <a href="https://www.npmjs.com/package/dom-screenshot">
+    <img src="https://img.shields.io/npm/v/dom-screenshot.svg" alt="Version">
   </a>
-  <a href="https://www.npmjs.com/package/modern-screenshot">
-    <img src="https://img.shields.io/npm/dm/modern-screenshot" alt="Downloads">
+  <a href="https://www.npmjs.com/package/dom-screenshot">
+    <img src="https://img.shields.io/npm/dm/dom-screenshot" alt="Downloads">
   </a>
-  <a href="https://github.com/qq15725/modern-screenshot/issues">
-    <img src="https://img.shields.io/github/issues/qq15725/modern-screenshot" alt="Issues">
+  <a href="https://github.com/qq15725/dom-screenshot/issues">
+    <img src="https://img.shields.io/github/issues/qq15725/dom-screenshot" alt="Issues">
   </a>
-  <a href="https://github.com/qq15725/modern-screenshot/blob/master/LICENSE">
-    <img src="https://img.shields.io/npm/l/modern-screenshot.svg" alt="License">
+  <a href="https://github.com/qq15725/dom-screenshot/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/l/dom-screenshot.svg" alt="License">
   </a>
 </p>
 
@@ -27,15 +27,15 @@
 ## 📦 Install
 
 ```sh
-npm i modern-screenshot
+npm i dom-screenshot
 ```
 
 ## 🦄 Usage
 
 ```ts
-import { domToPng } from 'modern-screenshot'
+import { domToPng } from 'dom-screenshot'
 
-domToPng(document.querySelector('#app')).then(dataUrl => {
+domToPng(document.querySelector('#app')).then((dataUrl) => {
   const link = document.createElement('a')
   link.download = 'screenshot.png'
   link.href = dataUrl
@@ -47,9 +47,9 @@ domToPng(document.querySelector('#app')).then(dataUrl => {
 <summary>CDN</summary><br>
 
 ```html
-<script src="https://unpkg.com/modern-screenshot"></script>
+<script src="https://unpkg.com/dom-screenshot"></script>
 <script>
-  modernScreenshot.domToPng(document.querySelector('body')).then(dataUrl => {
+  domScreenshot.domToPng(document.querySelector('body')).then((dataUrl) => {
     const link = document.createElement('a')
     link.download = 'screenshot.png'
     link.href = dataUrl
@@ -67,26 +67,29 @@ domToPng(document.querySelector('#app')).then(dataUrl => {
 
 ```js
 const script = document.createElement('script')
-script.src = "https://unpkg.com/modern-screenshot"
+script.src = 'https://unpkg.com/dom-screenshot'
 document.getElementsByTagName('head')[0].appendChild(script)
 
 script.onload = () => {
-  modernScreenshot
+  domScreenshot
     .domToImage(document.querySelector('body'), {
       debug: true,
       progress: (current, total) => {
-        console.log(`${ current }/${ total }`)
-      }
+        console.log(`${current}/${total}`)
+      },
     })
-    .then(img => {
+    .then((img) => {
       const width = 600
       const height = img.height * (width / img.width)
-      console.log('%c ', [
-        `padding: 0 ${ width / 2 }px;`,
-        `line-height: ${ height }px;`,
-        `background-image: url('${ img.src }');`,
-        `background-size: 100% 100%;`,
-      ].join(''))
+      console.log(
+        '%c ',
+        [
+          `padding: 0 ${width / 2}px;`,
+          `line-height: ${height}px;`,
+          `background-image: url('${img.src}');`,
+          `background-size: 100% 100%;`,
+        ].join('')
+      )
     })
 }
 ```
@@ -126,8 +129,8 @@ Quick screenshots per second by reusing context and web worker
 
 ```ts
 // use vite
-import workerUrl from 'modern-screenshot/worker?url'
-import { createContext, destroyContext, domToPng } from 'modern-screenshot'
+import workerUrl from 'dom-screenshot/worker?url'
+import { createContext, destroyContext, domToPng } from 'dom-screenshot'
 
 async function screenshotsPerSecond() {
   const context = await createContext(document.querySelector('#app'), {
@@ -135,16 +138,16 @@ async function screenshotsPerSecond() {
     workerNumber: 1,
   })
   for (let i = 0; i < 10; i++) {
-    domToPng(context).then(dataUrl => {
+    domToPng(context).then((dataUrl) => {
       const link = document.createElement('a')
-      link.download = `screenshot-${ i + 1 }.png`
+      link.download = `screenshot-${i + 1}.png`
       link.href = dataUrl
       link.click()
       if (i + 1 === 10) {
         destroyContext(context)
       }
     })
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
   }
 }
 

@@ -49,7 +49,7 @@ export function getDefaultStyle(
         sandbox.style.visibility = 'hidden'
         sandbox.style.position = 'fixed'
         ownerDocument.body.appendChild(sandbox)
-        sandbox.contentWindow?.document.write('<!DOCTYPE html><meta charset="UTF-8"><title></title><body>')
+        sandbox.srcdoc = '<!DOCTYPE html><meta charset="UTF-8"><title></title><body>'
         context.sandbox = sandbox
       }
     } catch (error) {
