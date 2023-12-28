@@ -1,19 +1,19 @@
 <h1 align="center">dom-screenshot</h1>
 
 <p align="center">
-  <a href="https://unpkg.com/dom-screenshot">
-    <img src="https://img.shields.io/bundlephobia/minzip/dom-screenshot" alt="Minzip">
+  <a href="https://unpkg.com/@egoist/dom-screenshot">
+    <img src="https://img.shields.io/bundlephobia/minzip/@egoist/dom-screenshot" alt="Minzip">
   </a>
-  <a href="https://www.npmjs.com/package/dom-screenshot">
-    <img src="https://img.shields.io/npm/v/dom-screenshot.svg" alt="Version">
+  <a href="https://www.npmjs.com/package/@egoist/dom-screenshot">
+    <img src="https://img.shields.io/npm/v/@egoist/dom-screenshot.svg" alt="Version">
   </a>
-  <a href="https://www.npmjs.com/package/dom-screenshot">
-    <img src="https://img.shields.io/npm/dm/dom-screenshot" alt="Downloads">
+  <a href="https://www.npmjs.com/package/@egoist/dom-screenshot">
+    <img src="https://img.shields.io/npm/dm/@egoist/dom-screenshot" alt="Downloads">
   </a>
-  <a href="https://github.com/qq15725/dom-screenshot/issues">
-    <img src="https://img.shields.io/github/issues/qq15725/dom-screenshot" alt="Issues">
+  <a href="https://github.com/egoist/dom-screenshot/issues">
+    <img src="https://img.shields.io/github/issues/egoist/dom-screenshot" alt="Issues">
   </a>
-  <a href="https://github.com/qq15725/dom-screenshot/blob/master/LICENSE">
+  <a href="https://github.com/egoist/dom-screenshot/blob/master/LICENSE">
     <img src="https://img.shields.io/npm/l/dom-screenshot.svg" alt="License">
   </a>
 </p>
@@ -22,18 +22,16 @@
 
 <p align="center">Fork from <a href="https://github.com/bubkoo/html-to-image">html-to-image</a></p>
 
-<p align="center">English | <a href="README.zh-CN.md">简体中文</a></p>
-
 ## 📦 Install
 
 ```sh
-npm i dom-screenshot
+npm i @egoist/dom-screenshot
 ```
 
 ## 🦄 Usage
 
 ```ts
-import { domToPng } from 'dom-screenshot'
+import { domToPng } from '@egoist/dom-screenshot'
 
 domToPng(document.querySelector('#app')).then((dataUrl) => {
   const link = document.createElement('a')
@@ -47,7 +45,7 @@ domToPng(document.querySelector('#app')).then((dataUrl) => {
 <summary>CDN</summary><br>
 
 ```html
-<script src="https://unpkg.com/dom-screenshot"></script>
+<script src="https://unpkg.com/@egoist/dom-screenshot"></script>
 <script>
   domScreenshot.domToPng(document.querySelector('body')).then((dataUrl) => {
     const link = document.createElement('a')
@@ -67,7 +65,7 @@ domToPng(document.querySelector('#app')).then((dataUrl) => {
 
 ```js
 const script = document.createElement('script')
-script.src = 'https://unpkg.com/dom-screenshot'
+script.src = 'https://unpkg.com/@egoist/dom-screenshot'
 document.getElementsByTagName('head')[0].appendChild(script)
 
 script.onload = () => {
@@ -129,8 +127,8 @@ Quick screenshots per second by reusing context and web worker
 
 ```ts
 // use vite
-import workerUrl from 'dom-screenshot/worker?url'
-import { createContext, destroyContext, domToPng } from 'dom-screenshot'
+import workerUrl from '@egoist/dom-screenshot/worker?url'
+import { createContext, destroyContext, domToPng } from '@egoist/dom-screenshot'
 
 async function screenshotsPerSecond() {
   const context = await createContext(document.querySelector('#app'), {

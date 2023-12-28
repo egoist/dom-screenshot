@@ -1,8 +1,11 @@
 {
-  "name": "dom-screenshot",
+  "name": "@egoist/dom-screenshot",
   "type": "module",
   "version": "1.0.2",
   "packageManager": "pnpm@8.7.6",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Quickly generate image from DOM node using HTML5 canvas and SVG",
   "author": "wxm",
   "license": "MIT",
