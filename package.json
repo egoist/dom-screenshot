@@ -1,7 +1,7 @@
 {
   "name": "dom-screenshot",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "packageManager": "pnpm@8.7.6",
   "description": "Quickly generate image from DOM node using HTML5 canvas and SVG",
   "author": "wxm",
